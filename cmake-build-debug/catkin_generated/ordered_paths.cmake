@@ -1,0 +1,1 @@
+set(ORDERED_PATHS "/home/alessio/catkin_ws/devel/lib;/opt/ros/indigo/lib")
