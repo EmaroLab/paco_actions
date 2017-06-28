@@ -1,8 +1,0 @@
-prefix=/home/alessio/catkin_ws/src/paco_actions/cmake-build-debug/devel
-
-Name: paco_actions
-Description: Description of paco_actions
-Version: 0.1.0
-Cflags: 
-Libs: -L/home/alessio/catkin_ws/src/paco_actions/cmake-build-debug/devel/lib 
-Requires: 

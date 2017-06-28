@@ -9,8 +9,12 @@
   <buildtool_depend>catkin</buildtool_depend>
   <build_depend>roscpp</build_depend>
   <build_depend>rosplan_planning_system</build_depend>
+  <build_depend>rosplan_knowledge_msgs</build_depend>
+  <build_depend>mongodb_store</build_depend>
   <run_depend>roscpp</run_depend>
   <run_depend>rosplan_planning_system</run_depend>
+  <run_depend>rosplan_knowledge_msgs</run_depend>
+  <run_depend>mongodb_store</run_depend>
 
   <export>
   </export>

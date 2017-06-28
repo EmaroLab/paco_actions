@@ -1,7 +1,10 @@
 #include "paco_actions/increase_angle_node.h"
+#include "rosplan_kb_client.h"
 
 /* The implementation of RPMoveBase.h */
 namespace KCL_rosplan {
+    bool i = true;
+    rosplan_kb_client* kb_client_ptr = NULL;
 
     /* constructor */
     PacoIncreaseAngle::PacoIncreaseAngle(ros::NodeHandle &nh, std::string &actionserver)
@@ -15,9 +18,24 @@ namespace KCL_rosplan {
     bool PacoIncreaseAngle::concreteCallback(const rosplan_dispatch_msgs::ActionDispatch::ConstPtr& msg) {
         ROS_ERROR("Executing action %s, params: %s %s %s", msg->name.c_str(), msg->parameters[0].value.c_str(),
                   msg->parameters[1].value.c_str(), msg->parameters[2].value.c_str());
-        ros::Duration d(5.0);
+
+        ros::Duration d(2.5);
         d.sleep();
-        ROS_ERROR("Done!");
+
+        //update knowledge base
+
+        kb_client_ptr->remove_fact("has-angle", {msg->parameters[0].value, ""});
+        kb_client_ptr->add_fact("has-angle", {msg->parameters[0].value, msg->parameters[2].value});
+
+        // update following links status (simulate conditional)
+
+        if (i) {
+            kb_client_ptr->remove_fact("has-angle", {"link2", ""});
+            kb_client_ptr->add_fact("has-angle", {"link2", "angle90"});
+            kb_client_ptr->remove_fact("has-angle", {"link3", ""});
+            kb_client_ptr->add_fact("has-angle", {"link3", "angle90"});
+            i = false;
+        }
         return true;
     }
 } // close namespace
@@ -34,6 +52,10 @@ int main(int argc, char **argv) {
     std::string actionserver;
     nh.param("action_server", actionserver, std::string("/increase_angle"));
 
+    //initialize rosplan_kb_client
+    rosplan_kb_client kb_client = rosplan_kb_client();
+    KCL_rosplan::kb_client_ptr = &kb_client;
+
     // create PDDL action subscriber
     KCL_rosplan::PacoIncreaseAngle increaseAngle(nh, actionserver);
 
@@ -42,5 +64,6 @@ int main(int argc, char **argv) {
                                       &KCL_rosplan::RPActionInterface::dispatchCallback,
                                       dynamic_cast<KCL_rosplan::RPActionInterface*>(&increaseAngle));
     increaseAngle.runActionInterface();
+
     return 0;
 }

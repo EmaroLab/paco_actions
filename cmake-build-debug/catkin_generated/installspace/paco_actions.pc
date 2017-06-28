@@ -1,8 +1,0 @@
-prefix=/usr/local
-
-Name: paco_actions
-Description: Description of paco_actions
-Version: 0.1.0
-Cflags: 
-Libs: -L/usr/local/lib 
-Requires: 

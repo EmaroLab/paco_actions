@@ -2,7 +2,7 @@ cmake_minimum_required(VERSION 2.8.3)
 project(paco_actions)
 
 ## Add support for C++11, supported in ROS Kinetic and newer
-# add_definitions(-std=c++11)
+ add_definitions(-std=c++11)
 
 ## Find catkin macros and libraries
 ## if COMPONENTS list like find_package(catkin REQUIRED COMPONENTS xyz)
@@ -10,6 +10,8 @@ project(paco_actions)
 find_package(catkin REQUIRED COMPONENTS
   roscpp
   rosplan_planning_system
+  mongodb_store
+  rosplan_knowledge_msgs
 )
 
 ## System dependencies are found with CMake's conventions
@@ -133,8 +135,8 @@ include_directories(
 ## Declare a C++ executable
 ## With catkin_make all packages are built within a single CMake context
 ## The recommended prefix ensures that target names across packages don't collide
-add_executable(decrease_angle_node src/decrease_angle_node.cpp)
-add_executable(increase_angle_node src/increase_angle_node.cpp)
+add_executable(decrease_angle_node src/decrease_angle_node.cpp src/rosplan_kb_client.cpp src/rosplan_kb_client.h)
+add_executable(increase_angle_node src/increase_angle_node.cpp src/rosplan_kb_client.cpp src/rosplan_kb_client.h)
 
 ## Rename C++ executable without prefix
 ## The above recommended prefix causes long target names, the following renames the
