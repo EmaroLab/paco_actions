@@ -12,6 +12,14 @@ find_package(catkin REQUIRED COMPONENTS
   rosplan_planning_system
   mongodb_store
   rosplan_knowledge_msgs
+  std_msgs
+  moveit_msgs
+  sensor_msgs
+  moveit_core
+  moveit_ros_planning
+  moveit_ros_planning_interface
+  tf
+  baxter_gripper_manager
 )
 
 ## System dependencies are found with CMake's conventions
@@ -135,8 +143,9 @@ include_directories(
 ## Declare a C++ executable
 ## With catkin_make all packages are built within a single CMake context
 ## The recommended prefix ensures that target names across packages don't collide
-add_executable(decrease_angle_node src/decrease_angle_node.cpp src/rosplan_kb_client.cpp src/rosplan_kb_client.h)
-add_executable(increase_angle_node src/increase_angle_node.cpp src/rosplan_kb_client.cpp src/rosplan_kb_client.h)
+add_executable(decrease_angle_node src/decrease_angle_node.cpp include/paco_actions/baxter_utils.h src/baxter_utils.cpp)
+add_executable(increase_angle_node src/increase_angle_node.cpp include/paco_actions/baxter_utils.h src/baxter_utils.cpp)
+add_executable(paco_planning_scene_node src/paco_planning_scene.cpp include/paco_actions/baxter_utils.h src/baxter_utils.cpp)
 
 ## Rename C++ executable without prefix
 ## The above recommended prefix causes long target names, the following renames the
@@ -148,6 +157,7 @@ add_executable(increase_angle_node src/increase_angle_node.cpp src/rosplan_kb_cl
 ## same as for the library above
 add_dependencies(decrease_angle_node ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
 add_dependencies(increase_angle_node ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
+add_dependencies(paco_planning_scene_node ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
 
 ## Specify libraries to link a library or executable target against
  target_link_libraries(decrease_angle_node
@@ -155,6 +165,10 @@ add_dependencies(increase_angle_node ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catki
  )
 
 target_link_libraries(increase_angle_node
+        ${catkin_LIBRARIES}
+        )
+
+target_link_libraries(paco_planning_scene_node
         ${catkin_LIBRARIES}
         )
 

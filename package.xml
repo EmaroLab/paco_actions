@@ -1,22 +1,35 @@
 <?xml version="1.0"?>
 <package>
-  <name>paco_actions</name>
-  <version>0.1.0</version>
-  <description>The paco_actions package</description>
-  <maintainer email="alessio.capitanelli@dibris.unige.it">alessio</maintainer>
-  <license>GPLv2</license>
+    <name>paco_actions</name>
+    <version>0.1.0</version>
+    <description>The paco_actions package</description>
+    <maintainer email="alessio.capitanelli@dibris.unige.it">Alessio Capitanelli</maintainer>
+    <license>GPLv2</license>
 
-  <buildtool_depend>catkin</buildtool_depend>
-  <build_depend>roscpp</build_depend>
-  <build_depend>rosplan_planning_system</build_depend>
-  <build_depend>rosplan_knowledge_msgs</build_depend>
-  <build_depend>mongodb_store</build_depend>
-  <run_depend>roscpp</run_depend>
-  <run_depend>rosplan_planning_system</run_depend>
-  <run_depend>rosplan_knowledge_msgs</run_depend>
-  <run_depend>mongodb_store</run_depend>
-
-  <export>
-  </export>
+    <buildtool_depend>catkin</buildtool_depend>
+    <build_depend>roscpp</build_depend>
+    <build_depend>rosplan_planning_system</build_depend>
+    <build_depend>rosplan_knowledge_msgs</build_depend>
+    <build_depend>moveit_msgs</build_depend>
+    <build_depend>std_msgs</build_depend>
+    <build_depend>sensor_msgs</build_depend>
+    <build_depend>mongodb_store</build_depend>
+    <build_depend>moveit_core</build_depend>
+    <build_depend>moveit_ros_planning_interface</build_depend>
+    <build_depend>moveit_ros_perception</build_depend>
+    <build_depend>tf</build_depend>
+    <build_depend>baxter_gripper_manager</build_depend>
+    <run_depend>roscpp</run_depend>
+    <run_depend>rosplan_planning_system</run_depend>
+    <run_depend>rosplan_knowledge_msgs</run_depend>
+    <run_depend>moveit_msgs</run_depend>
+    <run_depend>sensor_msgs</run_depend>
+    <run_depend>std_msgs</run_depend>
+    <run_depend>mongodb_store</run_depend>
+    <run_depend>moveit_core</run_depend>
+    <run_depend>moveit_ros_planning_interface</run_depend>
+    <run_depend>moveit_ros_perception</run_depend>
+    <run_depend>tf</run_depend>
+    <run_depend>baxter_gripper_manager</run_depend>
 
 </package>
