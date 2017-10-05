@@ -14,7 +14,7 @@ BaxterUtils::BaxterUtils(ros::NodeHandlePtr nh_ptr) {
 
 /**
  * Opens the Baxter Grippers. `baxter_gripper_manager` must be running.
- * @param arm[in] ARM::BOTH, ARM::RIGHT or ARM::LEFT, else nothing happens
+ * @param arm[in] BaxterUtils::BOTH, BaxterUtils::RIGHT or BaxterUtils::LEFT, else nothing happens
  */
 void BaxterUtils::open_gripper(int arm) {
     baxter_gripper_manager::GripperCommand gripper_cmd;
@@ -42,7 +42,7 @@ void BaxterUtils::open_gripper(int arm) {
 
 /**
  * Closes the Baxter Grippers. `baxter_gripper_manager` must be running.
- * @param arm[in] ARM::BOTH, ARM::RIGHT or ARM::LEFT, else nothing happens
+ * @param arm[in]BaxterUtils::BOTH, BaxterUtils::RIGHT or BaxterUtils::LEFT, else nothing happens
  */
 void BaxterUtils::close_gripper(int arm) {
     baxter_gripper_manager::GripperCommand gripper_cmd;
@@ -80,7 +80,7 @@ void BaxterUtils::return_arms() {
 /**
  * Move arms joints to a desired joint configuration. A 0.2Hz filter is applied to smooth the movement
  * @param joint_cmd[in] size 7 for single arm queries and 14 for dual arm ([left, right])
- * @param arm[in] ARM::BOTH, ARM::RIGHT or ARM::LEFT, else nothing happens
+ * @param arm[in] BaxterUtils::BOTH, BaxterUtils::RIGHT or BaxterUtils::LEFT, else nothing happens
  */
 void BaxterUtils::move_joints(const std::vector<double>& joint_cmd, int arm) {
     if (arm != ARM::BOTH && joint_cmd.size() != 7) {
@@ -158,7 +158,7 @@ void BaxterUtils::move_joints(const std::vector<double>& joint_cmd, int arm) {
 /**
  * Send a single joint command to one or both Baxter arms
  * @param joint_cmd[in] size 7 for single arm queries and 14 for dual arm ([left, right])
- * @param arm[in] ARM::BOTH, ARM::RIGHT or ARM::LEFT, else nothing happens
+ * @param arm[in] BaxterUtils::BOTH, BaxterUtils::RIGHT or BaxterUtils::LEFT, else nothing happens
  */
 void BaxterUtils::send_joint_positions(const std::vector<double>& joint_cmd, int arm) {
     baxter_core_msgs::JointCommand cmd;
@@ -180,7 +180,7 @@ void BaxterUtils::send_joint_positions(const std::vector<double>& joint_cmd, int
 /**
  * Return the current arm(s) joint state
  * @param arm_state[out] vector where to save the current arm(s) state
- * @param arm[in] arm ARM::BOTH, ARM::RIGHT or ARM::LEFT, else returns an empty vector
+ * @param arm[in] arm BaxterUtils::BOTH, BaxterUtils::RIGHT or BaxterUtils::LEFT, else returns an empty vector
  * @return The current arms(s) configuration ([left, right])
  */
 void BaxterUtils::get_arm_joint_states(std::vector<double>& arm_state, int arm) {

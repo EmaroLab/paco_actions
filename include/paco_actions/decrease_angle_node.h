@@ -4,6 +4,7 @@
 #include <iostream>
 #include <fstream>
 #include <boost/foreach.hpp>
+#include <sstream>
 
 #include "rosplan_action_interface/RPActionInterface.h"
 
@@ -11,13 +12,8 @@
 #include "move_base_msgs/MoveBaseAction.h"
 #include "mongodb_store/message_store.h"
 #include "geometry_msgs/PoseStamped.h"
-#include <moveit_msgs/PlanningScene.h>
-#include <moveit/move_group_interface/move_group_interface.h>
-#include <moveit/planning_interface/planning_request.h>
-#include <moveit/planning_interface/planning_response.h>
-#include <moveit/planning_interface/planning_interface.h>
 #include "std_srvs/Empty.h"
-#include "baxter_gripper_manager/GripperCommand.h"
+#include "baxter_utils.h"
 
 #include <tf/transform_listener.h>
 

@@ -15,12 +15,16 @@ find_package(catkin REQUIRED COMPONENTS
   std_msgs
   moveit_msgs
   sensor_msgs
+  angles
   moveit_core
   moveit_ros_planning
   moveit_ros_planning_interface
   tf
+  tf_conversions
   baxter_gripper_manager
 )
+
+find_package(Eigen3 REQUIRED)
 
 ## System dependencies are found with CMake's conventions
 # find_package(Boost REQUIRED COMPONENTS system)
