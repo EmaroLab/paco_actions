@@ -30,7 +30,7 @@ void add_setup_objs(){
     geometry_msgs::Pose pose;
     pose.orientation.w = 1.0;
     pose.position.x = 0.60;
-    pose.position.z = -0.12; // -0.1
+    pose.position.z = -0.17; // -0.1 //-0.13
 
     primitive.type = primitive.BOX;
     primitive.dimensions.resize(3);
@@ -55,8 +55,8 @@ void add_setup_objs(){
     pose.position.x = 0;
     pose.position.z = 0.12;
 
-    primitive.dimensions[0] = 0.26; // 0.06
-    primitive.dimensions[1] = 0.28;
+    primitive.dimensions[0] = 0.12; // 0.06
+    primitive.dimensions[1] = 0.30; // 0.28
     primitive.dimensions[2] = 0.10;
 
     object.primitives.clear();

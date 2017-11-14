@@ -41,12 +41,12 @@ namespace KCL_rosplan {
 
     private:
         enum ACTION_DESCRIPTORS{
-            RIGHT, LEFT, H_GRASP, V_GRASP
+            RIGHT, LEFT, H90_GRASP, H45_GRASP, V_GRASP, N_GRASP
         };
 
         struct ActionDescriptor{
             int arm, mode;
-            std::string gripper_frame, gripper_name, link_name;
+            std::string gripper_frame, arm_name, link_name;
             geometry_msgs::PoseStamped gripper_pose;
             tf::StampedTransform link_transform;
         };
@@ -60,6 +60,7 @@ namespace KCL_rosplan {
         ActionDescriptor root_action_descriptor;
         moveit::planning_interface::MoveGroupInterface move_group;
 
+        void get_x_rot_matrix(Eigen::Affine3d& rot_matrix, double angle);
         void get_y_rot_matrix(Eigen::Affine3d& rot_matrix, double angle);
         void get_z_rot_matrix(Eigen::Affine3d& rot_matrix, double angle);
         void compute_hover_pose(ActionDescriptor &descriptor);
